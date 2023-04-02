@@ -107,7 +107,7 @@ def devices_from_config(domain_config):
     for entity_id, config in domain_config[CONF_DEVICES].items():
         entity_type = config.pop(CONF_TYPE)
         entity_class = entity_class_for_type(entity_type)
-        rts_my_position = config.pop(CONF_MY_POSITION)
+        rts_my_position = config.pop(CONF_MY_POSITION, None)
         travel_time_down = config.pop(CONF_TRAVELLING_TIME_DOWN)
         travel_time_up = config.pop(CONF_TRAVELLING_TIME_UP)
         device_config = dict(domain_config[CONF_DEVICE_DEFAULTS], **config)
