@@ -1,3 +1,4 @@
 {
-  "name": "RFLink RTS"
+  "name": "RFLink RTS",
+  "render_readme": True,
 }
