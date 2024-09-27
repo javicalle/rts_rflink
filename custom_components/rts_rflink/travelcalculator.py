@@ -9,6 +9,7 @@ E.g.:
 * At time 20 TravelCalculator will return position 70 (final position not reached).
 * At time 30 TravelCalculator will return position 60 (final position reached).
 """
+
 from __future__ import annotations
 
 from enum import Enum
@@ -25,6 +26,18 @@ class TravelStatus(Enum):
 
 class TravelCalculator:
     """Class for calculating the current position of a cover."""
+
+    __slots__ = (
+        "travel_direction",
+        "travel_time_down",
+        "travel_time_up",
+        "_last_known_position",
+        "_last_known_position_timestamp",
+        "_position_confirmed",
+        "_travel_to_position",
+        "position_closed",
+        "position_open",
+    )
 
     def __init__(self, travel_time_down: float, travel_time_up: float) -> None:
         """Initialize TravelCalculator class."""
@@ -129,17 +142,13 @@ class TravelCalculator:
 
         def position_reached_or_exceeded(relative_position: int) -> bool:
             """Return if designated position was reached."""
-            if (
+            return (
                 relative_position <= 0
                 and self.travel_direction == TravelStatus.DIRECTION_DOWN
-            ):
-                return True
-            if (
+            ) or (
                 relative_position >= 0
                 and self.travel_direction == TravelStatus.DIRECTION_UP
-            ):
-                return True
-            return False
+            )
 
         if position_reached_or_exceeded(relative_position):
             return self._travel_to_position
@@ -163,7 +172,3 @@ class TravelCalculator:
             self.travel_time_down if travel_range > 0 else self.travel_time_up
         )
         return travel_time_full * abs(travel_range) / self.position_closed
-
-    def __eq__(self, other: object | None) -> bool:
-        """Equal operator."""
-        return self.__dict__ == other.__dict__
