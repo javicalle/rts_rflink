@@ -8,5 +8,5 @@
   "documentation": "https://www.home-assistant.io/integrations/rflink",
   "iot_class": "assumed_state",
   "issue_tracker": "https://github.com/javicalle/custom_components/issues",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
