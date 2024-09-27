@@ -38,7 +38,7 @@ from homeassistant.components.rflink.const import (
     EVENT_KEY_COMMAND,
 )
 
-from homeassistant.components.rflink import (
+from homeassistant.components.rflink.entity import (
     RflinkCommand,
 )
 
