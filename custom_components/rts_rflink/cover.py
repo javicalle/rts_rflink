@@ -26,7 +26,7 @@ from homeassistant.const import (
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.restore_state import RestoreEntity
 
-from homeassistant.components.rflink import (
+from homeassistant.components.rflink.const import (
     CONF_ALIASES,
     CONF_DEVICE_DEFAULTS,
     CONF_FIRE_EVENT,
@@ -36,6 +36,9 @@ from homeassistant.components.rflink import (
     CONF_SIGNAL_REPETITIONS,
     DEVICE_DEFAULTS_SCHEMA,
     EVENT_KEY_COMMAND,
+)
+
+from homeassistant.components.rflink import (
     RflinkCommand,
 )
 
